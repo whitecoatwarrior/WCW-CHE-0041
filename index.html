@@ -1,0 +1,2619 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH08_vQhw7nqJCy3igwm70zXI2Mwau8CvcIeXdZMF2dFm9bPfgWtP6En4GQZGKte7c/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_BIO_05 = [
+    {
+        question: "Enzymes primarily accelerate biochemical reactions within living cells by facilitating a reduction in which specific energetic barrier?",
+        options: [
+            "The Gibbs free energy of the products.",
+            "The overall enthalpy change of the reaction.",
+            "The activation energy required for the reaction.",
+            "The energy level of the transition state complex."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that enzymes lower the activation energy required for a chemical reaction to occur, effectively stabilizing the transition state. Option C directly reflects this principle. Options A and B relate to thermodynamic properties of the reaction that enzymes do not alter. Option D, while related to activation energy, is less precise as enzymes stabilize (reduce the energy of) the transition state, which is how they lower activation energy, but 'lowering the activation energy' is the direct effect."
+    },
+    {
+        question: "Which characteristic is NOT universally attributed to enzymes, considering certain exceptions discussed in biological contexts?",
+        options: [
+            "They are highly specific in their catalytic action.",
+            "They are primarily composed of globular proteins.",
+            "They significantly increase reaction rates without being consumed.",
+            "Their activity is sensitive to changes in temperature."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that enzymes are primarily globular proteins, 'except for Ribozymes, which are RNA.' This makes the statement that they are 'primarily composed of globular proteins' not universally true without the 'primarily' qualifier, but more importantly, an exception exists. The question asks what is NOT universally attributed. Ribozymes are enzymes but are RNA, not protein. All other options describe universal or nearly universal characteristics of enzymes."
+    },
+    {
+        question: "Within the active site of an enzyme, which two distinct functional regions are delineated, each serving a specialized role in catalysis?",
+        options: [
+            "The allosteric site and the regulatory site.",
+            "The structural region and the conformational region.",
+            "The substrate interaction site and the product release site.",
+            "The binding site and the catalytic site."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that the active site has two functional regions: a 'binding site' (for substrate attachment via non-covalent interactions) and a 'catalytic site' (where the substrate is converted to product). The other options describe incorrect or incomplete subdivisions of the active site function."
+    },
+    {
+        question: "An enzyme requires a non-protein component for its proper function. If this component is an organic molecule, loosely attached, and often derived from a vitamin, it is categorized as a:",
+        options: [
+            "Prosthetic group.",
+            "Coenzyme.",
+            "Activator.",
+            "Holoenzyme."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines coenzymes as 'loosely attached organic molecules, often derivatives of vitamins'. Prosthetic groups are covalently and permanently bonded. Activators are detachable inorganic metallic ions. Holoenzyme is the active enzyme form, not a type of cofactor."
+    },
+    {
+        question: "Considering the general mechanism of enzyme action, what immediately follows the formation of the enzyme-substrate complex (ES)?",
+        options: [
+            "The enzyme directly releases the product.",
+            "The enzyme undergoes denaturation.",
+            "The substrate is converted into a product.",
+            "The enzyme becomes inactive."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory outlines the general process: E + S → ES complex. Within this complex, 'the substrate is converted into a product, forming an enzyme-product (EP) complex'. Therefore, substrate conversion is the next immediate step."
+    },
+    {
+        question: "The Lock and Key model of enzyme action, proposed by Emil Fischer, primarily emphasizes which structural characteristic of the enzyme's active site?",
+        options: [
+            "Its inherent flexibility and adaptability to substrate binding.",
+            "Its capacity for allosteric regulation by effector molecules.",
+            "Its rigid, pre-existing shape perfectly complementary to the substrate.",
+            "Its ability to undergo significant conformational changes upon substrate interaction."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that the Lock and Key Model 'Proposed a rigid active site with a definite, pre-existing shape complementary to the substrate.' Option A and D describe the Induced Fit model. Option B relates to regulatory enzymes, which the Lock and Key model does not primarily explain."
+    },
+    {
+        question: "If an enzyme's active sites are completely saturated with substrate, how would a further increase in substrate concentration affect the reaction velocity?",
+        options: [
+            "It would cause a proportional increase in reaction velocity.",
+            "It would lead to a decrease in reaction velocity due to competitive inhibition.",
+            "It would result in a slight, temporary increase followed by a plateau.",
+            "It would have no significant effect on the maximum velocity (Vmax)."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 'at high substrate concentrations, all active sites become occupied (saturated), and the reaction reaches its maximum velocity (Vmax); further increase in substrate has no effect.' This describes option D."
+    },
+    {
+        question: "Exposure of an enzyme to temperatures significantly above its optimum causes irreversible loss of activity primarily due to:",
+        options: [
+            "Increased kinetic energy reducing substrate affinity.",
+            "Reversible inactivation of the enzyme's active site.",
+            "Disruption of primary peptide bonds in the polypeptide chain.",
+            "Violent vibrations leading to the breakdown of secondary and tertiary structures."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that 'Above Optimum: Increasing temperature beyond the optimum causes violent vibrations of the enzyme molecule, disrupting its secondary and tertiary structures, leading to a permanent loss of shape and catalytic activity, a process called denaturation.' Option D directly reflects this explanation. Option A describes activity below optimum. Option B is incorrect as denaturation is irreversible. Option C is incorrect; primary structure is generally stable at denaturing temperatures."
+    },
+    {
+        question: "Which type of enzyme inhibitor binds to the enzyme at a site distinct from the active site, thereby altering the overall enzyme conformation?",
+        options: [
+            "Competitive inhibitor.",
+            "Irreversible inhibitor that forms covalent bonds.",
+            "Prosthetic group acting as an inhibitor.",
+            "Non-competitive inhibitor."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that 'Non-competitive Inhibitors... Bind to a site on the enzyme *other than* the active site (an allosteric site). This binding alters the enzyme's overall shape'. Competitive inhibitors bind to the active site. Irreversible inhibitors can bind to the active site or other sites, but the defining characteristic given is binding to an allosteric site."
+    },
+    {
+        question: "Feedback inhibition is described as a crucial regulatory mechanism. What specific type of inhibition does it represent?",
+        options: [
+            "Reversible non-competitive inhibition.",
+            "Irreversible competitive inhibition.",
+            "Reversible competitive inhibition.",
+            "Irreversible non-competitive inhibition."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory explicitly states: 'Feedback Inhibition... A specific type of **reversible non-competitive inhibition** and a crucial regulatory mechanism in metabolic pathways.' Therefore, option A is the correct classification."
+    },
+    {
+        question: "A student observes that an enzyme's activity is significantly diminished when a specific metal ion is removed. Upon re-addition of the ion, the activity is restored. This metal ion is most accurately classified as a(n):",
+        options: [
+            "Coenzyme.",
+            "Prosthetic group.",
+            "Activator.",
+            "Competitive inhibitor."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory defines 'Activators' as 'Detachable inorganic metallic ions'. The scenario describes a detachable inorganic ion that is essential for activity, fitting the description of an activator. Coenzymes are organic, prosthetic groups are covalently bonded, and inhibitors reduce activity."
+    },
+    {
+        question: "The Induced Fit Model, unlike the Lock and Key Model, provides a more comprehensive explanation for the action of which specific category of enzymes?",
+        options: [
+            "Non-regulatory enzymes.",
+            "Ribozymes with peptidyl transferase activity.",
+            "Regulatory (allosteric) enzymes.",
+            "Enzymes operating at extreme pH conditions."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that the Induced Fit Model 'applies to regulatory (allosteric) enzymes (e.g., hexokinase)', while the Lock and Key model 'applies to non-regulatory enzymes'. Therefore, option C is correct, as it specifies regulatory enzymes."
+    },
+    {
+        question: "What is the primary consequence of extreme pH changes on enzyme structure that leads to a permanent loss of catalytic activity?",
+        options: [
+            "Temporary alteration of hydrogen bond networks.",
+            "Disruption of hydrophobic interactions at the active site.",
+            "Cleavage of peptide bonds within the primary structure.",
+            "Disruption of ionic bonds maintaining specific 3D conformation."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 'Extreme pH changes disrupt ionic bonds, leading to denaturation and permanent loss of activity'. While other interactions might also be affected, the document specifically highlights ionic bonds as crucial for maintaining 3D structure under pH influence. Cleavage of peptide bonds (primary structure) is not the typical mechanism of pH-induced denaturation."
+    },
+    {
+        question: "An inactive protein component of an enzyme, lacking its necessary non-protein part, is scientifically referred to as a(n):",
+        options: [
+            "Holoenzyme.",
+            "Apoenzyme.",
+            "Coenzyme.",
+            "Prosthetic group."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Apoenzyme' as 'The inactive protein part of an enzyme without its cofactor'. Holoenzyme is the active form with the cofactor. Coenzyme and prosthetic group are types of cofactors, not the inactive protein itself."
+    },
+    {
+        question: "When comparing competitive and non-competitive inhibitors, a distinguishing feature of competitive inhibition is that its effect can often be lessened or reversed by:",
+        options: [
+            "Increasing the enzyme concentration.",
+            "Lowering the environmental temperature.",
+            "Increasing the substrate concentration.",
+            "Introducing an allosteric activator."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states for Competitive Inhibitors: 'Increase in substrate concentration can reduce the inhibitory effect.' For non-competitive inhibitors, it says their effect is not overcome by increasing substrate concentration. Thus, option C is the distinguishing feature."
+    },
+    {
+        question: "Cyanides are listed as inhibitors that bind to iron in cytochrome oxidase, leading to inhibition. How are these types of inhibitors generally categorized based on their interaction with the enzyme and the reversibility of their effect?",
+        options: [
+            "Reversible competitive inhibitors.",
+            "Reversible non-competitive inhibitors.",
+            "Irreversible competitive inhibitors.",
+            "Irreversible inhibitors."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory lists 'Cyanides (inhibit cytochrome oxidase by binding to iron)' under 'Irreversible Inhibitors'. It also mentions cyanide under non-competitive, but the description fits irreversible nature better in the context of binding to iron and causing permanent blockage. The prompt's initial classification for cyanides is 'Irreversible Inhibitors'."
+    },
+    {
+        question: "Which of the following would NOT be considered a primary characteristic of enzymes?",
+        options: [
+            "They are highly specific in the reactions they catalyze.",
+            "They can be reused multiple times without being consumed.",
+            "They permanently alter the equilibrium of a reaction.",
+            "Their activity is influenced by environmental pH."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states enzymes 'tremendously increase the speed of biochemical reactions (metabolism) in living cells without being consumed'. Enzymes speed up the *rate* of reaching equilibrium, but they do not alter the *position* of equilibrium. Therefore, permanently altering the equilibrium is not a characteristic of enzymes. The other options are true characteristics."
+    },
+    {
+        question: "A prosthetic group is distinguished from other cofactors by which specific property?",
+        options: [
+            "It is an inorganic metallic ion that detaches easily.",
+            "It is an organic molecule derived from vitamins and loosely attached.",
+            "It is a non-protein component covalently and permanently bonded to the enzyme.",
+            "It acts as an initial substrate for the enzyme's catalytic activity."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory defines 'Prosthetic Groups' as 'Non-protein components that are covalently and permanently bonded to the enzyme'. Option A describes activators, and option B describes coenzymes. Option D is incorrect as it is a cofactor, not a substrate."
+    },
+    {
+        question: "The active site of an enzyme is a three-dimensional cavity whose structure is formed by the folding of the polypeptide chain, bringing together a small number of amino acids. Approximately how many amino acids are typically involved in forming this crucial site?",
+        options: [
+            "Fewer than 3 amino acids.",
+            "Hundreds of amino acids.",
+            "Between 3 and 12 amino acids.",
+            "Exactly 20 amino acids, one of each type."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the active site 'consists of 3-12 amino acids, brought together by the folding of the polypeptide chain'. This directly corresponds to option C."
+    },
+    {
+        question: "Which statement accurately describes the effect of temperature on enzyme activity BELOW its optimum?",
+        options: [
+            "Enzymes undergo irreversible denaturation due to reduced kinetic energy.",
+            "Enzyme activity is maximal due to optimal molecular collisions.",
+            "Enzymes are typically inactive but not denatured, regaining activity upon temperature increase.",
+            "The rate of reaction doubles for every 10°C rise, indicating denaturation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Below Optimum: Enzyme activity is slower due to reduced kinetic energy and fewer collisions, but enzymes are usually inactive, not denatured, and regain activity upon temperature increase (minimum temperature for activity).' Option C best describes this reversible state."
+    },
+    {
+        question: "The observation that pepsin functions optimally at approximately pH 2, while trypsin is most active around pH 8, exemplifies which fundamental property of enzymes?",
+        options: [
+            "Their general sensitivity to temperature fluctuations.",
+            "Their ability to be denatured by heavy metal ions.",
+            "Their specific pH optima tailored to their physiological environment.",
+            "Their dependence on cofactors for catalytic efficiency."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Each enzyme functions most effectively within a narrow pH range' and provides examples: '(e.g., pepsin optimum pH ~2, trypsin optimum pH ~8)'. This directly illustrates the concept of specific pH optima, as described in option C. The other options are general enzyme properties but not directly exemplified by the pH differences of pepsin and trypsin."
+    },
+    {
+        question: "Which of the following compounds is listed as an example of an irreversible inhibitor that specifically targets thiol (-SH) groups on enzymes?",
+        options: [
+            "Malonate.",
+            "Penicillin.",
+            "Mercury.",
+            "Acetaldehyde Di-Isopropyl fluorophosphate (DFP)."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory lists 'heavy metal ions (mercury, silver, copper bind to thiol -SH groups)' as examples of irreversible inhibitors. Among the options, mercury is a heavy metal ion. Malonate and penicillin are competitive, and DFP is a non-competitive inhibitor (though also irreversible)."
+    },
+    {
+        question: "A chemical substance that reduces or completely blocks enzyme activity without being chemically transformed by the enzyme is generically termed a(n):",
+        options: [
+            "Substrate analog.",
+            "Allosteric activator.",
+            "Enzyme inhibitor.",
+            "Catalytic intermediate."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Enzyme Inhibitors' as 'Chemical substances that reduce or block enzyme activity by binding to the enzyme but not being converted into product.' Option C is the direct definition. Substrate analog might describe some inhibitors but isn't the general term. Allosteric activators increase activity. Catalytic intermediate is part of the reaction pathway."
+    },
+    {
+        question: "The protein nature of most enzymes implies they are complex globular proteins often exhibiting higher-order structures. Which level of protein organization is particularly highlighted as being disrupted by factors like high temperature, leading to permanent inactivation?",
+        options: [
+            "Primary structure, due to peptide bond hydrolysis.",
+            "Secondary and tertiary structures, due to violent vibrations.",
+            "Quaternary structure only, without affecting individual subunits.",
+            "Allosteric modifications without structural changes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that 'Above Optimum: Increasing temperature beyond the optimum causes violent vibrations of the enzyme molecule, disrupting its secondary and tertiary structures, leading to a permanent loss of shape and catalytic activity, a process called denaturation.' Option B correctly identifies the disrupted structures. Primary structure (peptide bonds) is typically stable. Allosteric modifications are functional changes, not the fundamental structural disruption causing denaturation."
+    },
+    {
+        question: "In the general process of enzyme catalysis, after the product (P) is formed and released from the enzyme, what happens to the enzyme (E)?",
+        options: [
+            "It is permanently altered and must be synthesized anew.",
+            "It binds to another product molecule to form a complex.",
+            "It becomes free to catalyze another reaction.",
+            "It enters a deactivated state, requiring an activator."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states, 'Finally, the product is released, and the enzyme is free to catalyze another reaction.' This emphasizes the catalytic nature of enzymes where they are not consumed and are available for subsequent reactions. Option A contradicts the definition of a catalyst."
+    },
+    {
+        question: "The Lock and Key Model explains enzyme specificity by proposing:",
+        options: [
+            "A flexible active site that molds to the substrate.",
+            "A rigid active site with a definite, pre-existing shape complementary to the substrate.",
+            "An active site that forms transient covalent bonds with the substrate.",
+            "A dynamic active site that stabilizes the transition state through induced fit."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states for the Lock and Key Model: 'Proposed a rigid active site with a definite, pre-existing shape complementary to the substrate.' The other options describe aspects of the Induced Fit model or incorrect binding mechanisms."
+    },
+    {
+        question: "Why is the enzyme hexokinase mentioned as an example applicable to the Induced Fit Model of enzyme action?",
+        options: [
+            "Because it is a non-regulatory enzyme with a rigid active site.",
+            "Because its active site is flexible and undergoes conformational changes upon substrate binding.",
+            "Because it catalyzes a reaction that does not require the stabilization of a transition state.",
+            "Because it acts as a competitive inhibitor, binding to a pre-formed active site."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the Induced Fit Model 'applies to regulatory (allosteric) enzymes (e.g., hexokinase)'. The core concept of Induced Fit is that 'When the substrate binds, it induces a conformational change in the enzyme, molding the active site to fit the substrate more precisely'. Thus, hexokinase exemplifies an enzyme whose flexible active site changes shape upon substrate binding."
+    },
+    {
+        question: "The rate of an enzymatic reaction is directly proportional to enzyme concentration, but this proportionality holds true only under one critical condition. What is that condition?",
+        options: [
+            "When the temperature is below the optimum for enzyme activity.",
+            "When the substrate concentration is in excess (unlimited).",
+            "When the pH is significantly deviated from the enzyme's optimum.",
+            "When competitive inhibitors are present at high concentrations."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states: 'Enzyme Concentration: The rate of reaction is directly proportional to enzyme concentration, provided substrate is unlimited.' This condition is crucial for direct proportionality, as otherwise, substrate availability would be the limiting factor. Therefore, Option B is the correct answer."
+    },
+    {
+        question: "Which of the following is an accurate description of coenzymes?",
+        options: [
+            "They are inorganic metallic ions covalently bonded to the enzyme.",
+            "They are protein components that become active upon cofactor binding.",
+            "They are organic molecules, often vitamin derivatives, that are loosely attached and reusable.",
+            "They are permanent non-protein parts that destroy the enzyme's globular structure."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory defines 'Coenzymes' as 'Loosely attached organic molecules, often derivatives of vitamins (e.g., ATP, NAD⁺, FAD⁺). They can be reused.' This aligns directly with option C. Option A describes activators or prosthetic groups incorrectly. Option B describes apoenzymes. Option D describes irreversible inhibitors."
+    },
+    {
+        question: "A metabolic pathway's end-product reduces the activity of the initial enzyme in that pathway by binding to an allosteric site. This specific type of regulation is known as:",
+        options: [
+            "Competitive inhibition.",
+            "Irreversible inhibition.",
+            "Feedback inhibition.",
+            "Substrate-level activation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory defines 'Feedback Inhibition' as 'The end-product of a metabolic pathway acts as an inhibitor. The product binds to an allosteric site on an enzyme (often the first enzyme) earlier in the pathway.' This perfectly matches the scenario described in the question."
+    },
+    {
+        question: "Which example represents an enzyme that is NOT primarily a globular protein, as per the provided text?",
+        options: [
+            "Hexokinase, known for its induced fit mechanism.",
+            "Pepsin, an enzyme with an optimal pH of approximately 2.",
+            "Ribozymes, such as peptidyl transferase.",
+            "Succinate dehydrogenase, inhibited by malonate."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that enzymes are 'primarily globular proteins (except for Ribozymes, which are RNA)'. Among the given options, Ribozymes are the specific exception mentioned. The other enzymes listed are typical protein enzymes."
+    },
+    {
+        question: "The catalytic site within an enzyme's active site is primarily responsible for:",
+        options: [
+            "Establishing non-covalent interactions with the substrate.",
+            "The initial conformational change of the enzyme.",
+            "The conversion of the substrate into a product.",
+            "Binding metallic ion cofactors to enhance activity."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that the active site has two functional regions: a binding site and a 'catalytic site (where the substrate is converted to product)'. Therefore, option C correctly identifies its primary responsibility."
+    },
+    {
+        question: "An apoenzyme combines with its cofactor to form a functionally active complex. What is this active form called?",
+        options: [
+            "Coenzyme complex.",
+            "Prosthetic group.",
+            "Holoenzyme.",
+            "Enzyme-substrate complex."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states: 'Holoenzyme: The active enzyme formed when the apoenzyme combines with its cofactor.' This definition precisely matches option C."
+    },
+    {
+        question: "How do enzymes specifically contribute to stabilizing the transition state during a biochemical reaction?",
+        options: [
+            "By increasing the kinetic energy of reactant molecules.",
+            "By forming irreversible covalent bonds with the substrate.",
+            "By providing an alternative reaction pathway with a lower activation energy.",
+            "By altering the overall free energy change of the reaction."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'Enzymes lower the activation energy required for a chemical reaction to occur, effectively stabilizing the transition state.' Option C describes the overall effect of lowering activation energy. Option C is a direct rephrase of the core function. The stabilization of the transition state is *how* the activation energy is lowered."
+    },
+    {
+        question: "Malonate inhibits succinate dehydrogenase because it is structurally similar to the enzyme's natural substrate. This type of inhibition can typically be overcome by increasing the concentration of the natural substrate. This is a classic example of:",
+        options: [
+            "Non-competitive inhibition.",
+            "Irreversible inhibition.",
+            "Feedback inhibition.",
+            "Competitive inhibition."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 'Competitive Inhibitors... Structurally similar to the natural substrate. Compete with the substrate for binding to the enzyme's active site. Increase in substrate concentration can reduce the inhibitory effect.' Malonate is given as a specific example. This perfectly matches the description of competitive inhibition."
+    },
+    {
+        question: "A research experiment demonstrates that an enzyme's activity gradually increases as the temperature rises from 10°C to 37°C. However, above 38°C, the activity sharply declines and cannot be restored. What is the most accurate explanation for the irreversible decline in activity at higher temperatures?",
+        options: [
+            "The enzyme's active site becomes saturated with substrate molecules.",
+            "The enzyme experiences a permanent loss of its three-dimensional structure.",
+            "The pH of the reaction environment becomes too acidic for optimal function.",
+            "The kinetic energy of the substrate molecules decreases, hindering collisions."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states: 'Above Optimum: Increasing temperature beyond the optimum causes violent vibrations of the enzyme molecule, disrupting its secondary and tertiary structures, leading to a permanent loss of shape and catalytic activity, a process called denaturation.' A permanent loss of 3D structure (shape) directly corresponds to denaturation and irreversible loss of activity."
+    },
+    {
+        question: "Which of the following describes the nature of the bonds formed between a substrate and the binding site of an enzyme's active site?",
+        options: [
+            "Strong covalent bonds.",
+            "Permanent ionic bonds.",
+            "Weak non-covalent interactions.",
+            "Disulfide bridges for structural rigidity."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the binding site is for 'substrate attachment via non-covalent interactions like hydrogen bonding and hydrophobic forces'. This aligns with option C. Strong covalent bonds would imply irreversible binding, which is not characteristic of substrate binding. Disulfide bridges are within the enzyme structure, not typically for substrate binding."
+    },
+    {
+        question: "The effect of a non-competitive inhibitor on enzyme activity can generally NOT be overcome by increasing the substrate concentration. This is primarily because non-competitive inhibitors:",
+        options: [
+            "Are structurally identical to the substrate.",
+            "Covalently modify the enzyme's active site.",
+            "Bind to an allosteric site, changing the enzyme's shape.",
+            "Are consumed during the inhibitory process."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that 'Non-competitive Inhibitors... Bind to a site on the enzyme *other than* the active site (an allosteric site). This binding alters the enzyme's overall shape... making it unable to effectively bind or convert the substrate, even if the substrate concentration is high.' The key reason it's not overcome by substrate is the allosteric binding and shape change, as described in option C."
+    },
+    {
+        question: "If an enzyme's optimum pH is 2, this suggests its typical physiological environment or role is likely associated with conditions found in:",
+        options: [
+            "The bloodstream, which is typically around pH 7.4.",
+            "The small intestine, where pH is generally alkaline.",
+            "The stomach, known for its highly acidic environment.",
+            "Cellular cytoplasm, which maintains a neutral pH."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory gives 'pepsin optimum pH ~2' as an example. Pepsin is known to function in the stomach, which is a highly acidic environment. This is an application-based question requiring a small logical leap from the given example to a common biological context. Option C directly aligns with the known environment of an enzyme like pepsin."
+    },
+    {
+        question: "Which of the following best describes the characteristics of irreversible inhibitors?",
+        options: [
+            "They form weak, temporary linkages with the enzyme and are overcome by increasing substrate.",
+            "They are structurally similar to the substrate and compete for the active site.",
+            "They destroy the enzyme's globular structure or permanently block active sites by strong covalent bonds.",
+            "They bind to allosteric sites and can detach when product concentration decreases."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Irreversible Inhibitors: Destroy the enzyme's globular structure or permanently block active sites by forming strong covalent bonds.' This description matches option C. Options A and B describe reversible competitive inhibitors, and option D describes feedback inhibition (a type of reversible non-competitive)."
+    },
+    {
+        question: "The rate of an enzymatic reaction generally doubles for every 10°C rise in temperature, up to the optimum. What is the underlying reason for this observed increase in reaction rate?",
+        options: [
+            "Increased enzyme concentration due to heat.",
+            "Enhanced enzyme denaturation at moderate temperatures.",
+            "Increased kinetic energy of molecules leading to more frequent collisions.",
+            "Conversion of inactive apoenzymes into active holoenzymes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states: 'Below Optimum: Enzyme activity is slower due to reduced kinetic energy and fewer collisions, but enzymes are usually inactive...' and 'Rate generally doubles for every 10°C rise up to optimum.' The increase in kinetic energy and subsequent increase in effective collisions between enzyme and substrate molecules is the fundamental reason for the increased reaction rate with temperature, up to the point of denaturation. Therefore, option C is correct."
+    },
+    {
+        question: "A drug is developed that forms a strong, permanent covalent bond with an enzyme's active site, rendering it inactive. This drug would be classified as what type of inhibitor?",
+        options: [
+            "Competitive, reversible.",
+            "Non-competitive, reversible.",
+            "Irreversible.",
+            "Feedback inhibitor."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'Irreversible Inhibitors... permanently block active sites by forming strong covalent bonds.' This direct description matches option C. The reversibility and binding site aspects rule out the other options."
+    },
+    {
+        question: "What is the primary significance of enzymes being highly specific catalysts?",
+        options: [
+            "It allows them to function efficiently across a broad range of metabolic pathways.",
+            "It ensures that a particular enzyme catalyzes only specific reactions or groups of related reactions.",
+            "It makes enzymes highly susceptible to denaturation by slight pH changes.",
+            "It permits enzymes to be consumed and replenished rapidly during cellular metabolism."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'They are highly specific (catalyzing specific reactions or groups of related reactions)'. This directly supports option B. Specificity prevents unwanted side reactions and ensures metabolic control. Options A, C, and D are either incorrect or unrelated to the significance of specificity."
+    },
+    {
+        question: "Which specific non-protein component, if permanently and covalently bonded to an enzyme, allows it to become functionally active?",
+        options: [
+            "Activator.",
+            "Coenzyme.",
+            "Prosthetic group.",
+            "Substrate."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory defines 'Prosthetic Groups' as 'Non-protein components that are covalently and permanently bonded to the enzyme'. This description directly matches option C. Activators and coenzymes are generally detachable or loosely attached, respectively. Substrates are reactants."
+    },
+    {
+        question: "The Induced Fit Model suggests that the active site is flexible. What happens to the enzyme's shape after the product is released, according to this model?",
+        options: [
+            "It remains permanently altered to fit the product.",
+            "It denatures, requiring new enzyme synthesis.",
+            "It regains its original shape, ready for a new substrate.",
+            "It adopts a completely random, non-functional conformation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states for the Induced Fit Model: 'The enzyme then regains its original shape after product release.' This highlights the reversible nature of the conformational change, making the enzyme available for further catalysis. Option C is the correct answer."
+    },
+    {
+        question: "Which of the following correctly pairs an example with its classification as an inorganic metallic ion cofactor?",
+        options: [
+            "ATP - Coenzyme.",
+            "Iron-containing porphyrin ring - Prosthetic Group.",
+            "Mg²⁺ - Activator.",
+            "NAD⁺ - Coenzyme."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists 'Activators: Detachable inorganic metallic ions (e.g., Fe²⁺, Mg²⁺, Cu²⁺, Zn²⁺)'. Option C correctly identifies Mg²⁺ as an activator. The other options are correctly classified but not as inorganic metallic ion cofactors."
+    },
+    {
+        question: "Consider a situation where a decrease in temperature below an enzyme's optimum leads to reduced activity. Why is this inhibition generally considered reversible, unlike denaturation?",
+        options: [
+            "It causes permanent disruption of ionic bonds, but not peptide bonds.",
+            "It primarily involves conformational changes that are not due to kinetic energy reduction.",
+            "Enzymes are typically inactive, not denatured, and regain activity upon temperature increase.",
+            "It specifically prevents substrate binding without altering the active site's structure."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Below Optimum: Enzyme activity is slower due to reduced kinetic energy and fewer collisions, but enzymes are usually inactive, not denatured, and regain activity upon temperature increase'. This means the structural integrity is largely maintained, and the loss of activity is due to reduced molecular motion, not structural breakdown. Option C accurately captures this reversibility."
+    },
+    {
+        question: "What happens to the rate of an enzymatic reaction when substrate concentration is increased from very low to moderate levels, assuming enzyme concentration is constant and not saturated?",
+        options: [
+            "The rate decreases proportionally due to competitive inhibition.",
+            "The rate remains constant, as enzyme concentration is the limiting factor.",
+            "The rate increases proportionally with substrate availability.",
+            "The rate increases exponentially until Vmax is reached."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states: 'Substrate Concentration: At low substrate concentrations, the reaction rate increases proportionally with substrate availability.' This directly supports option C. The rate only plateaus when saturation is reached, and it doesn't decrease or remain constant under these conditions."
+    },
+    {
+        question: "The specific 3D conformation of an enzyme, essential for its function, is maintained by various interactions. Which type of bond is explicitly mentioned as being disrupted by extreme pH changes, leading to denaturation?",
+        options: [
+            "Hydrogen bonds.",
+            "Peptide bonds.",
+            "Disulfide bridges.",
+            "Ionic bonds."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states: 'Extreme pH changes disrupt ionic bonds, leading to denaturation and permanent loss of activity'. While other bonds (like hydrogen bonds) are also affected by pH, the document specifically highlights ionic bonds in this context."
+    },
+    {
+        question: "A laboratory develops a new chemical that binds to the active site of a bacterial enzyme, preventing its normal substrate from binding. However, increasing the substrate concentration significantly reduces the effectiveness of this chemical. This indicates the chemical is likely a:",
+        options: [
+            "Non-competitive inhibitor.",
+            "Irreversible inhibitor.",
+            "Feedback inhibitor.",
+            "Competitive inhibitor."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 'Competitive Inhibitors... Compete with the substrate for binding to the enzyme's active site. Increase in substrate concentration can reduce the inhibitory effect.' The description of the chemical aligns perfectly with competitive inhibition. Non-competitive and irreversible inhibitors are generally not overcome by increasing substrate, and feedback inhibition is a specific type of non-competitive inhibition."
+    },
+    {
+        question: "What is the consequence of feedback inhibition for a metabolic pathway when the concentration of its end-product begins to decrease significantly?",
+        options: [
+            "The end-product permanently inactivates the first enzyme.",
+            "The initial enzyme in the pathway increases its affinity for inhibitors.",
+            "The inhibitor detaches from the allosteric site, allowing the pathway to resume activity.",
+            "The pathway shifts to an alternative, less efficient substrate."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states for feedback inhibition: 'When the end-product concentration decreases (as it is consumed in cellular events), the inhibitor detaches, and the pathway resumes activity.' This directly matches option C, illustrating the reversible and regulatory nature of this process."
+    },
+    {
+        question: "An enzyme's active site is characterized as a 'charge-bearing' cavity. This feature is primarily significant because it:",
+        options: [
+            "Ensures the enzyme can be reused indefinitely.",
+            "Allows for specific non-covalent interactions with the substrate.",
+            "Facilitates the irreversible denaturation of the enzyme at high temperatures.",
+            "Provides a site for covalent attachment of coenzymes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the active site is a 'specific, charge-bearing, three-dimensional cavity... for substrate attachment via non-covalent interactions like hydrogen bonding and hydrophobic forces'. The 'charge-bearing' aspect is crucial for specific electrostatic non-covalent interactions with the substrate, as described in option B."
+    },
+    {
+        question: "Which component is missing when an apoenzyme is present, rendering it inactive?",
+        options: [
+            "Substrate.",
+            "Product.",
+            "Cofactor.",
+            "Water."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states: 'Apoenzyme: The inactive protein part of an enzyme without its cofactor.' Therefore, the cofactor is the missing component. Substrate is what it acts upon, not a component needed for its activation."
+    },
+    {
+        question: "The rate of an enzyme-catalyzed reaction typically reaches a maximum velocity (Vmax) at high substrate concentrations. What is the primary limiting factor preventing further increases in reaction rate at Vmax?",
+        options: [
+            "The accumulation of product inhibiting the enzyme.",
+            "The number of available enzyme active sites.",
+            "The decrease in environmental temperature.",
+            "The presence of irreversible inhibitors."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that 'at high substrate concentrations, all active sites become occupied (saturated), and the reaction reaches its maximum velocity (Vmax); further increase in substrate has no effect.' This means the number of available active sites is the limiting factor at Vmax. Option B directly explains this saturation."
+    },
+    {
+        question: "How does the 'Induced Fit Model' reconcile the concept of enzyme specificity with the dynamic nature of enzymatic reactions?",
+        options: [
+            "By proposing a rigid active site that perfectly matches the substrate's static shape.",
+            "By suggesting that the enzyme's active site is flexible and adjusts its conformation upon substrate binding to optimize fit.",
+            "By indicating that enzymes non-specifically bind to multiple substrates, then 'induce' a fit for only one.",
+            "By asserting that the enzyme's shape remains constant, and only the substrate changes form during binding."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the Induced Fit Model 'suggesting that the active site is flexible. When the substrate binds, it induces a conformational change in the enzyme, molding the active site to fit the substrate more precisely and optimize catalytic activity.' This explains how specificity is achieved dynamically. Option B correctly captures this reconciliation."
+    },
+    {
+        question: "Considering the role of pH in maintaining enzyme activity, which structural elements are directly influenced by changes in hydrogen ion concentration, affecting the enzyme's overall 3D conformation?",
+        options: [
+            "The linear sequence of amino acids in the primary structure.",
+            "The strength of the peptide bonds connecting amino acids.",
+            "The ionization (charge) of amino acid side chains.",
+            "The overall molecular weight of the enzyme protein."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'pH changes influence the ionization (charge) of amino acid side chains, which are crucial for maintaining the enzyme's specific 3D conformation'. This direct statement supports option C. Primary structure and peptide bonds are not directly altered by pH changes in a way that leads to denaturation, and molecular weight remains unchanged."
+    },
+    {
+        question: "Which of the following describes the relationship between enzyme concentration and reaction rate, assuming all other factors are optimal and substrate is unlimited?",
+        options: [
+            "Inversely proportional.",
+            "Exponentially proportional.",
+            "Directly proportional.",
+            "No relationship."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states: 'Enzyme Concentration: The rate of reaction is directly proportional to enzyme concentration, provided substrate is unlimited.' This directly supports option C."
+    },
+    {
+        question: "In the aspartate to threonine metabolic pathway, threonine itself acts as an inhibitor of enzyme 1. What effect does this binding have on enzyme 1's active site?",
+        options: [
+            "It makes the active site permanently rigid, preventing any substrate binding.",
+            "It competes with the initial substrate for binding to the active site.",
+            "It induces a conformational change, making the active site unable to bind the initial substrate.",
+            "It covalently modifies the active site, thereby destroying its catalytic residues."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states for feedback inhibition (of which threonine in the aspartate pathway is an example): 'The product binds to an allosteric site on an enzyme... This binding changes the enzyme's conformation, making its active site unable to bind the initial substrate'. Option C directly describes this mechanism. Options A, B, and D describe different inhibitory mechanisms."
+    },
+    {
+        question: "If an enzyme's activity is only temporarily reduced by a chemical substance, and this reduction can be reversed, the substance is generally classified as a(n):",
+        options: [
+            "Irreversible inhibitor.",
+            "Permanent activator.",
+            "Reversible inhibitor.",
+            "Denaturing agent."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Reversible Inhibitors: Form weak, temporary linkages with the enzyme. Their effect can often be overcome...'. This description matches option C. Irreversible inhibitors cause permanent loss of activity."
+    },
+    {
+        question: "Considering the structural components of an active enzyme, which term refers to the entire active complex formed by the protein part and its essential non-protein cofactor?",
+        options: [
+            "Apoenzyme.",
+            "Coenzyme.",
+            "Holoenzyme.",
+            "Prosthetic group."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory defines 'Holoenzyme' as 'The active enzyme formed when the apoenzyme combines with its cofactor'. This matches the description of the entire active complex. Apoenzyme is the inactive protein part, while coenzyme and prosthetic group are types of cofactors."
+    },
+    {
+        question: "A substance is found to bind to an enzyme at a site far from its active site, causing a change in the active site's shape and reducing its affinity for the substrate. This type of inhibition is termed:",
+        options: [
+            "Competitive inhibition.",
+            "Allosteric activation.",
+            "Non-competitive inhibition.",
+            "Substrate inhibition."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Non-competitive Inhibitors... Bind to a site on the enzyme *other than* the active site (an allosteric site). This binding alters the enzyme's overall shape, including the active site...'. This is a direct description of non-competitive inhibition. Allosteric activation increases activity, and competitive inhibition occurs at the active site."
+    },
+    {
+        question: "The general process of enzyme catalysis involves several steps. What is the final step in this process, immediately before the enzyme is free to catalyze another reaction?",
+        options: [
+            "Formation of the enzyme-substrate complex.",
+            "Conversion of substrate to product.",
+            "Release of the product from the enzyme.",
+            "Formation of the enzyme-product complex."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory outlines the General Process: E + S → ES complex. Within this complex, the substrate is converted into a product (P), forming an EP complex. 'Finally, the product is released, and the enzyme is free to catalyze another reaction.' Thus, release of product is the step just before the enzyme is free. Therefore, option C is correct."
+    },
+    {
+        question: "Which specific type of cofactor is described as an organic molecule, often a derivative of vitamins, that is loosely attached to the apoenzyme and can be reused in multiple catalytic cycles?",
+        options: [
+            "Activator.",
+            "Prosthetic group.",
+            "Coenzyme.",
+            "Inorganic ion."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory defines 'Coenzymes' as 'Loosely attached organic molecules, often derivatives of vitamins... They can be reused.' This aligns directly with option C. Activators are inorganic ions, and prosthetic groups are permanently bonded."
+    },
+    {
+        question: "If an experiment measures enzyme activity across a wide pH range, and observes a sharp decline on either side of a narrow optimum, what is the most likely reason for this sensitivity?",
+        options: [
+            "Denaturation of the enzyme's primary structure at extreme pH.",
+            "Disruption of hydrophobic forces leading to reversible precipitation.",
+            "Influence of pH on amino acid side chain ionization affecting 3D conformation.",
+            "Increased substrate affinity at non-optimal pH values."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states 'pH changes influence the ionization (charge) of amino acid side chains, which are crucial for maintaining the enzyme's specific 3D conformation (tertiary and quaternary structure) and the active site's chemistry.' This is the fundamental reason for pH sensitivity. Option C directly explains this. Option A is incorrect; primary structure is generally stable. Option B describes some protein behavior but isn't the primary reason cited for pH sensitivity of enzymes. Option D is incorrect, affinity would decrease."
+    },
+    {
+        question: "The statement that enzymes are not consumed during the biochemical reactions they catalyze is fundamental to their role as:",
+        options: [
+            "Structural components.",
+            "Energy storage molecules.",
+            "Biological catalysts.",
+            "Genetic information carriers."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'Enzymes are biological catalysts... without being consumed.' The characteristic of not being consumed is a defining feature of catalysts, allowing them to facilitate many reactions sequentially. Therefore, option C is correct."
+    },
+    {
+        question: "If an enzyme is operating at its maximum velocity (Vmax), what could be the only effective way to increase the overall rate of product formation?",
+        options: [
+            "Increase the substrate concentration further.",
+            "Introduce a competitive inhibitor.",
+            "Increase the enzyme concentration.",
+            "Lower the temperature to reduce denaturation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that at Vmax, increasing substrate has no effect because all active sites are saturated. The only way to increase the rate then is to provide more active sites, which means increasing the enzyme concentration, as stated in the 'Enzyme Concentration' section (provided substrate is unlimited, which it effectively is if Vmax is reached and limited by enzyme). Option C is the correct answer."
+    },
+    {
+        question: "Which characteristic specifically differentiates Ribozymes from the majority of other enzymes?",
+        options: [
+            "Their ability to lower activation energy.",
+            "Their high specificity for substrates.",
+            "Their composition as RNA molecules instead of proteins.",
+            "Their sensitivity to temperature and pH."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'Enzymes are biological catalysts, primarily globular proteins (except for Ribozymes, which are RNA).' This directly identifies the distinguishing feature of Ribozymes as their RNA composition. The other options are general characteristics of all enzymes."
+    },
+    {
+        question: "The active site's binding region functions by forming what type of interactions with the substrate?",
+        options: [
+            "Permanent covalent bonds.",
+            "Strong ionic bonds only.",
+            "Non-covalent interactions like hydrogen bonding and hydrophobic forces.",
+            "Disulfide bridges for irreversible attachment."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the binding site is for 'substrate attachment via non-covalent interactions like hydrogen bonding and hydrophobic forces'. Option C accurately describes these interactions. Permanent covalent bonds would mean the substrate is stuck, which is not how enzymes work."
+    },
+    {
+        question: "Heavy metal ions like mercury, silver, and copper are classified as irreversible inhibitors because they:",
+        options: [
+            "Compete reversibly with the substrate for the active site.",
+            "Bind to allosteric sites, causing temporary conformational changes.",
+            "Form weak, temporary linkages with the enzyme, easily overcome.",
+            "Destroy the enzyme's globular structure or permanently block active sites, often by binding to thiol (-SH) groups."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states 'Irreversible Inhibitors... alter the enzyme's shape, breaking disulfide bridges, leading to denaturation and inactivation. Examples: ...heavy metal ions (mercury, silver, copper bind to thiol -SH groups).' This aligns with option D, emphasizing permanent structural damage or blockage."
+    },
+    {
+        question: "Which model of enzyme action would be most appropriate to describe an enzyme like hexokinase, which undergoes a significant structural adjustment to precisely fit its substrate upon binding?",
+        options: [
+            "The rigid lock and key model.",
+            "The competitive inhibition model.",
+            "The induced fit model.",
+            "The allosteric binding model without conformational change."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the 'Induced Fit Model (Daniel Koshland, 1959)... suggests that the active site is flexible. When the substrate binds, it induces a conformational change in the enzyme, molding the active site to fit the substrate more precisely... This model applies to regulatory (allosteric) enzymes (e.g., hexokinase).' Option C is the correct model."
+    },
+    {
+        question: "The optimum temperature for human enzymes is typically in the range of 37-38°C. What happens to enzyme activity if the temperature is lowered to 10°C?",
+        options: [
+            "The enzyme undergoes irreversible denaturation.",
+            "The enzyme's catalytic efficiency doubles every 10°C.",
+            "Enzyme activity is slower due to reduced kinetic energy, but it's not denatured.",
+            "The enzyme converts into its inactive apoenzyme form permanently."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'Below Optimum: Enzyme activity is slower due to reduced kinetic energy and fewer collisions, but enzymes are usually inactive, not denatured, and regain activity upon temperature increase'. This description aligns with option C. Denaturation is irreversible and occurs at high temperatures."
+    },
+    {
+        question: "Considering the 'induced fit' model, what is the crucial event that occurs when the substrate initially binds to the enzyme, leading to optimal catalytic activity?",
+        options: [
+            "The enzyme's active site permanently adopts a new, stable conformation.",
+            "The enzyme denatures temporarily, then refolds around the substrate.",
+            "The substrate induces a conformational change in the enzyme, molding the active site for precise fit.",
+            "The substrate undergoes a pre-catalytic chemical modification before binding."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states for the Induced Fit Model: 'When the substrate binds, it induces a conformational change in the enzyme, molding the active site to fit the substrate more precisely and optimize catalytic activity.' Option C directly describes this crucial event."
+    },
+    {
+        question: "A novel enzyme is discovered that requires an inorganic metallic ion, Mg²⁺, to function. This ion can be easily removed, rendering the enzyme inactive. Mg²⁺ in this context acts as a(n):",
+        options: [
+            "Coenzyme.",
+            "Prosthetic group.",
+            "Activator.",
+            "Irreversible inhibitor."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Activators' as 'Detachable inorganic metallic ions (e.g., Fe²⁺, Mg²⁺, Cu²⁺, Zn²⁺)'. The description perfectly fits Mg²⁺ as an activator. Coenzymes are organic, and prosthetic groups are covalently bonded."
+    },
+    {
+        question: "Which type of enzyme inhibitor is characterized by its structural similarity to the natural substrate, allowing it to compete for binding at the enzyme's active site?",
+        options: [
+            "Non-competitive inhibitor.",
+            "Irreversible inhibitor.",
+            "Allosteric inhibitor.",
+            "Competitive inhibitor."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 'Competitive Inhibitors: Structurally similar to the natural substrate. Compete with the substrate for binding to the enzyme's active site.' Option D directly matches this description. Non-competitive and allosteric inhibitors bind elsewhere."
+    },
+    {
+        question: "If a regulatory enzyme exhibits a sigmoidal kinetics curve (not mentioned in PDF but contextually relevant to allosteric/regulatory enzymes), which model of enzyme action would provide a better mechanistic understanding for its behavior?",
+        options: [
+            "The Lock and Key model, due to its emphasis on rigid specificity.",
+            "The Michaelis-Menten model, as it describes simple enzyme kinetics.",
+            "The Induced Fit model, which accounts for conformational changes upon ligand binding.",
+            "The irreversible inhibition model, as it explains enzyme deactivation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states the 'Induced Fit Model... applies to regulatory (allosteric) enzymes'. While sigmoidal kinetics isn't mentioned, the concept of a regulatory enzyme, which the Induced Fit model addresses with its flexible active site and conformational changes, makes it the best fit among the given options for understanding complex regulatory behavior. The Lock and Key model is for non-regulatory enzymes, and the others are about different aspects of enzyme action."
+    },
+    {
+        question: "What is the primary consequence if an enzyme's optimum pH deviates significantly, leading to extreme pH conditions?",
+        options: [
+            "The enzyme temporarily speeds up its reaction rate.",
+            "The enzyme forms stronger covalent bonds with its substrate.",
+            "The enzyme undergoes denaturation and permanent loss of activity.",
+            "The enzyme becomes saturated with hydrogen ions, increasing activity."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Extreme pH changes disrupt ionic bonds, leading to **denaturation** and permanent loss of activity'. This directly corresponds to option C."
+    },
+    {
+        question: "The specific chemical nature of an enzyme's active site is crucial for its function. If the active site is disrupted by a chemical inhibitor, which amino acid functional groups might be the target of such an inhibitor, based on examples provided?",
+        options: [
+            "Carboxyl groups involved in peptide bonds.",
+            "Hydroxyl groups on sugar residues.",
+            "Phosphate groups in the protein backbone.",
+            "Thiol (-SH) groups, targeted by heavy metals."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states under 'Irreversible Inhibitors' that 'heavy metal ions (mercury, silver, copper bind to thiol -SH groups)'. This provides a direct example of specific amino acid functional groups (thiol groups, found in cysteine) being targeted by inhibitors. The other options are either not specific enough, incorrect, or not mentioned in this context."
+    },
+    {
+        question: "If an enzyme is categorized as a regulatory (allosteric) enzyme, which model of enzyme action would best describe its interaction with its substrate?",
+        options: [
+            "The Lock and Key Model.",
+            "The Induced Fit Model.",
+            "The Irreversible Binding Model.",
+            "The Competitive Inhibition Model."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory explicitly states that the 'Induced Fit Model... applies to regulatory (allosteric) enzymes'. The Lock and Key model applies to non-regulatory enzymes. Therefore, option B is the correct answer."
+    },
+    {
+        question: "The active site's catalytic region is where the chemical transformation of the substrate occurs. This implies that this region is responsible for:",
+        options: [
+            "Maintaining the overall globular structure of the enzyme.",
+            "Attaching the enzyme to cellular membranes.",
+            "Facilitating the actual chemical reaction and bond rearrangements.",
+            "Binding and releasing cofactors for enzyme activation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the catalytic site is 'where the substrate is converted to product'. This conversion involves the actual chemical reaction and any necessary bond rearrangements. Therefore, option C is the most accurate description. Other options are incorrect roles for the catalytic site."
+    },
+    {
+        question: "Which of the following is NOT an example of a type of cofactor mentioned in the text?",
+        options: [
+            "Activators.",
+            "Coenzymes.",
+            "Prosthetic groups.",
+            "Allosteric modulators."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory lists 'Activators', 'Coenzymes', and 'Prosthetic Groups' as types of cofactors. 'Allosteric modulators' are not listed as a type of cofactor, though some cofactors can act as allosteric modulators, the term itself is not a primary category of cofactor within the provided content. Therefore, option D is the correct answer as it is not listed as a type of cofactor."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-WCW-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Enzyme ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-BIO-05';
+let quizData = quizData_WCW_BIO_05;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-BIO-05', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-BIO-05', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-BIO-05', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_BIO_05;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_BIO_05;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_BIO_05[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_BIO_05.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
